@@ -387,6 +387,8 @@ def hello():
 @app.route('/', methods=['GET', 'POST'])
 def processing():
     #Распаковываем json из пришедшего POST-запроса
+    import sys
+    log(sys.path)
     data = json.loads(request.data)
     #Вконтакте в своих запросах всегда отправляет поле типа
     if 'type' not in data.keys():
