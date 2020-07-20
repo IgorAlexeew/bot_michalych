@@ -1,8 +1,12 @@
 
 # A very simple Flask Hello World app for you to get started with...
+import sys
 
 from flask import Flask, request, json
+
+sys.path += ['/'.join(sys.path[0].split('/')[:-1])]
 from settings import confirmation_token, token, password
+
 from pandas import read_csv
 # from github import Github
 import git
@@ -13,6 +17,8 @@ import difflib
 import time
 
 app = Flask(__name__)
+
+# path = '/'.join(sys.path[0].split('/')[:-1])
 
 base = {
     'get': {
@@ -357,8 +363,6 @@ for num, value in csv.iterrows():
             value['example'])
         BOT_CONFIG['intents'][intent]['response'] += clean_split(
             value['response'])
-
-log(BOT_CONFIG)
 
 
 @app.route('/update_server', methods=['POST'])
