@@ -7,7 +7,7 @@ from flask import Flask, request, json
 old_path = sys.path
 sys.path = '/'.join(sys.path[0].split('/')[:-1]) + 'site'
 from settings import confirmation_token, token, password
-sys.path = old.path
+sys.path = old_path
 
 from pandas import read_csv
 # from github import Github
