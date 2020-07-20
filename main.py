@@ -5,7 +5,7 @@ import sys
 from flask import Flask, request, json
 
 old_path = sys.path
-sys.path = '/'.join(sys.path[0].split('/')[:-1] + 'site'
+sys.path = '/'.join(sys.path[0].split('/')[:-1]) + 'site'
 from settings import confirmation_token, token, password
 sys.path = old.path
 
