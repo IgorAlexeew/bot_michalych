@@ -1,5 +1,5 @@
 import random
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import StratifiedKFold
@@ -24,7 +24,7 @@ BOT_CONFIG = {
             ]
         },
         'appeal': {
-            'example': ['Миша,', 'Михалыч,', 'Михаил,'],
+            'example': ['Миша', 'Михалыч', 'Михаил'],
             'response': ['Что-то не так?', 'Мда...']
         },
         'areyoubad': {
@@ -209,7 +209,7 @@ class Bot():
             X_text += value['example']
             y += [intent] * len(value['example'])
 
-        self.vectorizer = CountVectorizer()
+        self.vectorizer = CountVectorizer(analyzer='char_wb', ngram_range=(2, 4))
         X = self.vectorizer.fit_transform(X_text)
 
         self.model = LogisticRegression()
@@ -243,7 +243,7 @@ class Bot():
         failure_phrases = self.config_['empty']
         return random.choice(failure_phrases)
 
-if name == '__main__':
+if __name__ == '__main__':
     bot = Bot(BOT_CONFIG)
 
     while True:
@@ -251,4 +251,5 @@ if name == '__main__':
         if text.lower() in ['выход', 'exit', 'пока']:
             print('Михалыч: Пока!')
             break
+        print(f'(tech: {bot.get_intent(text)})')
         print('Михалыч:', bot.get_answer(text))
