@@ -243,11 +243,12 @@ class Bot():
         failure_phrases = self.config_['empty']
         return random.choice(failure_phrases)
 
-bot = Bot(BOT_CONFIG)
+if name == '__main__':
+    bot = Bot(BOT_CONFIG)
 
-while True:
-    text = input('Я:       ')
-    if text.lower() in ['выход', 'exit', 'пока']:
-        print('Михалыч: Пока!')
-        break
-    print('Михалыч:', bot.get_answer(text))
+    while True:
+        text = input('Я:       ')
+        if text.lower() in ['выход', 'exit', 'пока']:
+            print('Михалыч: Пока!')
+            break
+        print('Михалыч:', bot.get_answer(text))
