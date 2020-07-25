@@ -201,7 +201,7 @@ BOT_CONFIG = {
 class Bot():
     def __init__(self, config):
         self.config_ = config
-        self.coef = 0.15
+        self.threshold = 0.2
 
         X_text = []
         y = []
@@ -231,7 +231,7 @@ class Bot():
         probas_list = self.model.predict_proba([text_vector])[0]
         probas_list = list(probas_list)
         max_proba = max(probas_list)
-        if max_proba > self.coef:
+        if max_proba > self.threshold:
             index = probas_list.index(max_proba)
             return self.model.classes_[index]
 
