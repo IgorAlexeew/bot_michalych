@@ -1,4 +1,6 @@
 import random
+import string
+import re
 from sklearn.feature_extraction.text import CountVectorizer 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
@@ -201,7 +203,7 @@ BOT_CONFIG = {
 class Bot():
     def __init__(self, config):
         self.config_ = config
-        self.threshold = 0.6
+        self.threshold = 0.68
 
         X_text = []
         y = []
@@ -210,6 +212,8 @@ class Bot():
             y += [intent] * len(value['example'])
 
         self.vectorizer = CountVectorizer(analyzer='char_wb', ngram_range=(2, 4))
+        X_text = self.clean_str(X_text)
+        print(X_text)
         X = self.vectorizer.fit_transform(X_text)
 
         self.model = LogisticRegression()
@@ -227,10 +231,13 @@ class Bot():
         return self.get_failure_phrase()
 
     def get_intent(self, text):
-        text_vector = self.vectorizer.transform([text]).toarray()[0]
+        text_vector = self.vectorizer.transform([self.clean_str(text)]).toarray()[0]
         probas_list = self.model.predict_proba([text_vector])[0]
         probas_list = list(probas_list)
         max_proba = max(probas_list)
+        index = probas_list.index(max_proba)
+        print(f'(proba: {max_proba})')
+        print(f'(intent: {self.model.classes_[index]})')
         if max_proba > self.threshold:
             index = probas_list.index(max_proba)
             return self.model.classes_[index]
@@ -243,6 +250,22 @@ class Bot():
         failure_phrases = self.config_['empty']
         return random.choice(failure_phrases)
 
+    def clean_str(self, text):
+        if isinstance(text, str):
+            res = text
+            translate_table = dict((ord(char), ' ') for char in string.punctuation)   
+            res = res.translate(translate_table)
+            res = res.strip()
+            res = re.sub(r'\s+', ' ', res)
+            return res
+        elif isinstance(text, list):
+            res = []
+            for t in text:
+                res.append(self.clean_str(t))
+            return res
+        else:
+            pass
+
 if __name__ == '__main__':
     bot = Bot(BOT_CONFIG)
 
@@ -251,5 +274,5 @@ if __name__ == '__main__':
         if text.lower() in ['выход', 'exit', 'пока']:
             print('Михалыч: Пока!')
             break
-        print(f'(tech: {bot.get_intent(text)})')
+        # print(f'(tech: {bot.get_intent(text)})')
         print('Михалыч:', bot.get_answer(text))
