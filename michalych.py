@@ -18,7 +18,14 @@ from sklearn.svm import LinearSVC
 BOT_CONFIG = {
     'intents': {
         'about': {
-            'example': ['Кто ты?', 'Кто ты такой?'],
+            'example': [
+                'Кто ты?',
+                'Кто ты такой?',
+                'Кто ты такой есть?',
+                'Что ты?',
+                'Что ты такое?',
+                'Что ты такое есть?'
+            ],
             'response': [
                 'Я просто бот, нахожусь на стадии разработки.',
                 'Просто чат-бот...',
@@ -81,7 +88,12 @@ BOT_CONFIG = {
         },
         'good': {
             'example': ['Отлично!', 'Классно!', 'Замечательно!'],
-            'response': ['Согласен.', 'Возможно.', 'Действительно.']},
+            'response': ['Согласен.', 'Возможно.', 'Действительно.']
+        },
+        'goodbye': {
+            'example': ['Пока', 'До свидания', 'До новых встреч'],
+            'response': ['Пока!', 'До свидания!', 'До новых встреч!', 'Пиши ещё...']
+        },
         'goodhabits': {
             'example': [
                 'У тебя есть хорошие привычки?',
@@ -94,7 +106,7 @@ BOT_CONFIG = {
         },
         'habits': {
             'example': ['Какие у тебя приывчки?'],
-            'response': ['Спамить, отвечать.']},
+            'response': ['Спамить, иногда...']},
         'hello': {
             'example': [
                 'Привет',
@@ -203,7 +215,7 @@ BOT_CONFIG = {
 class Bot():
     def __init__(self, config):
         self.config_ = config
-        self.threshold = 0.68
+        self.threshold = 0.6
 
         X_text = []
         y = []
@@ -213,7 +225,7 @@ class Bot():
 
         self.vectorizer = CountVectorizer(analyzer='char_wb', ngram_range=(2, 4))
         X_text = self.clean_str(X_text)
-        print(X_text)
+
         X = self.vectorizer.fit_transform(X_text)
 
         self.model = LogisticRegression()
@@ -236,6 +248,10 @@ class Bot():
         probas_list = list(probas_list)
         max_proba = max(probas_list)
         index = probas_list.index(max_proba)
+        # print(f'(proba: {max_proba})')
+        # index = probas_list.index(max_proba)
+        # print(f'(intent: {self.model.classes_[index]})')
+
         if max_proba > self.threshold:
             index = probas_list.index(max_proba)
             return self.model.classes_[index]
