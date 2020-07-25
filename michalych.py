@@ -201,7 +201,7 @@ BOT_CONFIG = {
 class Bot():
     def __init__(self, config):
         self.config_ = config
-        self.threshold = 0.2
+        self.threshold = 0.3
 
         X_text = []
         y = []
