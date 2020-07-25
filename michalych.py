@@ -236,8 +236,6 @@ class Bot():
         probas_list = list(probas_list)
         max_proba = max(probas_list)
         index = probas_list.index(max_proba)
-        print(f'(proba: {max_proba})')
-        print(f'(intent: {self.model.classes_[index]})')
         if max_proba > self.threshold:
             index = probas_list.index(max_proba)
             return self.model.classes_[index]
