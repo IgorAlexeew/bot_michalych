@@ -32,7 +32,7 @@ class Bot():
 
         X = self.vectorizer.fit_transform(X_text)
 
-        self.model = LogisticRegression()
+        self.model = LogisticRegression(solver='lbfgs', multi_class='auto')
         self.model.fit(X, y)
 
     def get_answer(self, text):
