@@ -90,7 +90,7 @@ class Bot():
 
 if __name__ == '__main__':
     bot = Bot(BOT_CONFIG)
-
+    print(BOT_CONFIG)
     while True:
         text = input('Я:       ')
         if text.lower() in ['выход', 'exit', 'пока']:

@@ -258,6 +258,7 @@ def obj_read(path='bot.config'):
 # Чтение config из файла
 if 'bot.config' in os.listdir():
     BOT_CONFIG = obj_read()
+    pprint(BOT_CONFIG)
 else:
     obj_write()
 
@@ -539,8 +540,8 @@ def edit():
             now = datetime.datetime.today().strftime("%d.%m.%Y")
             if 'bot.config' in os.listdir():
                 os.rename('bot.config', f'old/bot{c:04d}_{now}.config')
-            obj_write(path='bot.config')
-            print('\nИзменение сохранены.')
+            obj_write(path='bot.config', obj=BOT_CONFIG)
+            print('\nИзменения сохранены.')
         else:
             print('\nИзменения не будут сохранены.')
     else:
