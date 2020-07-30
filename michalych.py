@@ -49,16 +49,16 @@ class Bot():
     def get_intent(self, text):
         text_vector = self.vectorizer.transform([self.clean_str(text)]).toarray()[0]
         probas_list = self.model.predict_proba([text_vector])[0]
-        np_array = probas_list
+        # np_array = probas_list
         probas_list = list(probas_list)
         max_proba = max(probas_list)
         index = probas_list.index(max_proba)
-        print(f'(proba:   {max_proba:>10.3f})')
-        avg = np_array.mean()
-        std = np_array.std()
-        print(f'(average: {avg:>10.3f})')
-        print(f'(std:     {std:>10.3f})')
-        print(f'(intent: {self.model.classes_[index]})')
+        # print(f'(proba:   {max_proba:>10.3f})')
+        # avg = np_array.mean()
+        # std = np_array.std()
+        # print(f'(average: {avg:>10.3f})')
+        # print(f'(std:     {std:>10.3f})')
+        # print(f'(intent: {self.model.classes_[index]})')
 
         if max_proba > self.threshold:
             index = probas_list.index(max_proba)
