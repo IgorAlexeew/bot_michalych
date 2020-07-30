@@ -29,7 +29,6 @@ class Bot():
 
         self.vectorizer = CountVectorizer(analyzer='char_wb', ngram_range=(2, 4))
         X_text = self.clean_str(X_text)
-
         X = self.vectorizer.fit_transform(X_text)
 
         self.model = LogisticRegression(solver='lbfgs', multi_class='auto')
