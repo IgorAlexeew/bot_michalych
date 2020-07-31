@@ -17,7 +17,7 @@ from sklearn.svm import LinearSVC
 from config import BOT_CONFIG
 
 class Bot():
-    def __init__(self, config):
+    def __init__(self, config=BOT_CONFIG):
         self.config_ = config
         self.threshold = 0.44
 
