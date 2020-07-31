@@ -16,6 +16,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
 from config import BOT_CONFIG
 
+
 class Bot():
     def __init__(self, config=BOT_CONFIG):
         self.config_ = config
@@ -89,11 +90,11 @@ class Bot():
 
 if __name__ == '__main__':
     bot = Bot(BOT_CONFIG)
-    print(BOT_CONFIG)
+    # print(BOT_CONFIG)
     while True:
         text = input('Я:       ')
-        if text.lower() in ['выход', 'exit', 'пока']:
-            print('Михалыч: Пока!')
-            break
+        
         # print(f'(tech: {bot.get_intent(text)})')
         print('Михалыч:', bot.get_answer(text))
+        if bot.get_intent(text) == 'goodbye':
+            break
