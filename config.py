@@ -3,6 +3,12 @@ import os
 import pickle
 import datetime
 
+
+sep = '\\' if '\\' in __file__ else '/'
+path = __file__.split(sep)
+path = sep.join(path[:-1] + [''])
+print(path)
+
 # BOT_CONFIG = {
 #     'intents': {
 #         'about': {
@@ -256,7 +262,7 @@ class YesNoDialogue():
                 continue
 
 
-def obj_read(path='bot.config'):
+def obj_read(path=f'{path}bot.config'):
     with open(path, 'rb') as f:
         object = pickle.load(f)
     return object
@@ -272,7 +278,7 @@ def obj_read(path='bot.config'):
 BOT_CONFIG = obj_read()
 
 
-def obj_write(path='bot.config', obj=BOT_CONFIG):
+def obj_write(path=f'{path}bot.config', obj=BOT_CONFIG):
     with open(path, 'wb') as f:
         pickle.dump(obj, f)
 
