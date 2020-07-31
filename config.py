@@ -561,5 +561,7 @@ def edit():
     else:
         print('\nНет изменений.')
 
+print(__file__)
+
 if __name__ == '__main__':
     edit()
