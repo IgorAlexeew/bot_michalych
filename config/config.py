@@ -12,7 +12,7 @@ def get_path():
     return path_str, path_arr, sep
 
 
-path = get_path()
+path = get_path()[0]
 
 
 # print(path)
