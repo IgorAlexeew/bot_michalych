@@ -3,6 +3,7 @@ import random
 import time
 import difflib
 from config.config import get_path
+from michalych import Bot
 
 path = get_path()[0]
 
@@ -14,7 +15,8 @@ def check_exist(text, patterns):
     return False
 
 
-def GET_from_vk(data, session, api, bot, settings):
+def GET_from_vk(data, session, api, settings):
+    bot = Bot()
     token = settings['token']
     confirmation_token = settings['token']
     password = settings['password']
