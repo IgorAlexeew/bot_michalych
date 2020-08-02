@@ -4,10 +4,18 @@ import pickle
 import datetime
 
 
-sep = '\\' if '\\' in __file__ else '/'
-path = __file__.split(sep)
-path = sep.join(path[:-1] + [''])
-print(path)
+def get_path():
+    sep = '\\' if '\\' in __file__ else '/'
+    path_arr = __file__.split(sep)
+    path_str = sep.join(path[:-1] + [''])
+
+    return path_str, path_arr, sep
+
+
+path = get_path()
+
+
+# print(path)
 
 # BOT_CONFIG = {
 #     'intents': {
@@ -268,13 +276,6 @@ def obj_read(path=f'{path}bot.config'):
     return object
 
 
-# Чтение config из файла
-# if 'bot.config' in os.listdir():
-#     BOT_CONFIG = obj_read()
-#     # pprint(BOT_CONFIG)
-# else:
-#     obj_write()
-
 BOT_CONFIG = obj_read()
 
 
@@ -285,6 +286,26 @@ def obj_write(path=f'{path}bot.config', obj=BOT_CONFIG):
 
 def line_break(text):
     return '\n'.join(text.split('\\n'))
+
+
+def print_config(obj=obj_read(), mrkr=' '):
+    print()
+    for key, value in obj.items():
+        print(f'{key}:')
+        if key == 'empty':
+            for exp in value:
+                print(mrkr * 12 + f'{exp}')
+            print()
+            continue
+        for intent, data in value.items():
+            print(mrkr * 4 + f'{intent}:')
+            for t, exps in data.items():
+                print(mrkr * 8 + f'{t}:')
+                for exp in exps:
+                    print(mrkr * 12 + f'{exp}')
+                print()
+            # print()
+        # print()
 
 
 def edit():
@@ -567,7 +588,9 @@ def edit():
     else:
         print('\nНет изменений.')
 
-print(__file__)
 
 if __name__ == '__main__':
+    print(f'{"BOT_CONFIG":-^70}')
+    print_config()
+    print(f'{"/BOT_CONFIG":-^70}')
     edit()

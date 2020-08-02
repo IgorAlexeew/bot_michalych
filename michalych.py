@@ -1,21 +1,19 @@
 import random
 import string
 import re
-from sklearn.feature_extraction.text import CountVectorizer 
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import accuracy_score
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.naive_bayes import GaussianNB
-from sklearn.svm import LinearSVC
-from config import BOT_CONFIG
+import sys
 
+# sep = '\\' if '\\' in __file__ else '/'
+# sep = '\\' if '\\' in __file__ else '/'
+# path = __file__.split(sep)
+# path = sep.join(path[:-1] + [''])
+# print(path)
+# sys.path += [f'{path}{sep}config']
+# print(sys.path)
+
+from sklearn.feature_extraction.text import CountVectorizer 
+from sklearn.linear_model import LogisticRegression
+from config.config import BOT_CONFIG
 
 class Bot():
     def __init__(self, config=BOT_CONFIG):
