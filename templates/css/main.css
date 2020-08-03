@@ -132,7 +132,7 @@ div#join a:active {
 @media only screen and (min-width: 960px) {
     div#main {
         width:340px; /*Ширина блока*/
-        height:455px; /*Высота блока*/
+        height:440px; /*Высота блока*/
         margin-left:-170px; /*Смещаем блок на половину всей ширины влево*/
         margin-top:-250px; /*Смещаем блок на половину высоты вверх*/
         border-radius: 25px;
@@ -162,7 +162,7 @@ div#join a:active {
         width: 340px;
         height: 40px;
         margin-left: -170px;
-        margin-top: 220px;
+        margin-top: 200px;
         border-radius: 25px;
         padding: 10px 0 0 0;
     }
