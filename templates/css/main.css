@@ -36,7 +36,7 @@ div#main img {
 }
 
 div#main h1 {
-    margin: 12px 10px 0 10px;
+    margin: 185px 10px 0 10px;
     font-size: 19pt;
 }
 
@@ -127,4 +127,43 @@ div#join a:active {
     -o-transition: box-shadow .2s ease-in-out;
     transition: box-shadow .2s ease-in-out;
     box-shadow: 0 0 25px #798294, inset 0 0 0 5px #357bff, inset 0 0 0 10px #518eff;
+}
+
+@media only screen and (min-width: 960px) {
+    div#main {
+        width:340px; /*Ширина блока*/
+        height:455px; /*Высота блока*/
+        margin-left:-170px; /*Смещаем блок на половину всей ширины влево*/
+        margin-top:-250px; /*Смещаем блок на половину высоты вверх*/
+        border-radius: 25px;
+    }
+
+    /* div#main img {
+        width: 100%;
+        border-radius: 25px 25px 0 0;
+        height: 159px;
+        object-fit: cover;
+    } */
+
+    div#main h1 {
+        margin: 255px 20px 0 20px;
+        font-size: 26pt;
+    }
+
+    div#main p {
+        margin: 6px 20px;
+        font-size: 13pt;
+    }
+ 
+    div#join a{
+        font-weight: 700;
+        font-size: 15pt;
+        margin: 0%;
+        width: 340px;
+        height: 40px;
+        margin-left: -170px;
+        margin-top: 220px;
+        border-radius: 25px;
+        padding: 10px 0 0 0;
+    }
 }
