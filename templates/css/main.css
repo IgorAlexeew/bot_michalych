@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,500;1,600&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&family=Pacifico&family=Ubuntu+Condensed&display=swap');
+
+/* font-family: 'Exo 2', sans-serif;
+font-family: 'IBM Plex Sans', sans-serif;
+font-family: 'Noto Serif JP', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Ubuntu Condensed', sans-serif; */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: #c4d2db;
+}
+
+div#main {
+    background: #fdfdfd;
+    width:240px; /*Ширина блока*/
+    height:335px; /*Высота блока*/
+    margin:0 auto;
+    overflow:visible;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-120px; /*Смещаем блок на половину всей ширины влево*/
+    margin-top:-200px; /*Смещаем блок на половину высоты вверх*/
+    border-radius: 25px;
+    box-shadow: 0 0 25px #798294
+}
+
+div#main img {
+    width: 100%;
+    border-radius: 25px 25px 0 0;
+    height: 159px;
+    object-fit: cover;
+}
+
+div#main h1 {
+    margin: 12px 10px 0 10px;
+    font-size: 19pt;
+}
+
+div#main p {
+    margin: 2px 10px;
+}
+
+div#join {
+    background: #1567ff;
+    width:240px; /*Ширина блока*/
+    height:50px; /*Высота блока*/
+    margin:0 auto;
+    overflow:visible;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-120px; /*Смещаем блок на половину всей ширины влево*/
+    margin-top:150px; /*Смещаем блок на половину высоты вверх*/
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #798294, inset 0 0 0 0px #357bff, inset 0 0 0 0px #518eff;
+    -moz-transition: box-shadow 1s ease-in-out;
+    -webkit-transition: box-shadow 1s ease-in-out;
+    -moz-transition: box-shadow 1s ease-in-out;
+    -o-transition: box-shadow 1s ease-in-out;
+    transition: box-shadow 1s ease-in-out;
+}
+
+div#join:hover {
+    /* background: #0e4fc9;
+    width:242px;
+    height:52px;
+    left:50%;
+    top:50%;
+    margin-left:-121px;
+    margin-top:149px;
+    box-shadow: 0 0 30px #8e97ac;
+    border-radius: 30px; */
+    box-shadow: 0 0 25px #798294, inset 0 0 0 5px #357bff, inset 0 0 0 0 #518eff;
+}
+
+div#join:active {
+    /* background: #0e4fc9;
+    width:242px;
+    height:52px;
+    left:50%;
+    top:50%;
+    margin-left:-121px;
+    margin-top:149px;
+    box-shadow: 0 0 30px #8e97ac;
+    border-radius: 30px; */
+    -moz-transition: box-shadow .2s ease-in-out;
+    -webkit-transition: box-shadow .2s ease-in-out;
+    -moz-transition: box-shadow .2s ease-in-out;
+    -o-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+    box-shadow: 0 0 25px #798294, inset 0 0 0 5px #357bff, inset 0 0 0 10px #518eff;
+}
+
+div#join p {
+    text-align: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12pt;
+    color: rgb(255, 255, 255);
+    margin: 6%;
+    /* -moz-transition: 1s ease-in-out;
+    -webkit-transition: 1s ease-in-out;
+    -moz-transition: 1s ease-in-out;
+    -o-transition: 1s ease-in-out;
+    transition: 1s ease-in-out; */
+}
+/* 
+div#join:hover p{
+    font-size: 12.4pt;
+    color: #f0f3f7;
+    margin: 6.1%;
+    -moz-transition: 1s ease-in-out;
+    -webkit-transition: 1s ease-in-out;
+    -moz-transition: 1s ease-in-out;
+    -o-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
+} */

@@ -5,7 +5,9 @@ import difflib
 from config.config import get_path
 from michalych import Bot
 
+
 path = get_path()[0]
+
 
 def check_exist(text, patterns):
     for w in text.split():
