@@ -20,7 +20,7 @@ def check_exist(text, patterns):
 def GET_from_vk(data, session, api, settings):
     bot = Bot()
     token = settings['token']
-    confirmation_token = settings['token']
+    confirmation_token = settings['confirmation_token']
     password = settings['password']
     #Вконтакте в своих запросах всегда отправляет поле типа
     if 'type' not in data.keys():
