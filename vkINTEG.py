@@ -323,5 +323,6 @@ def GET_from_vk(data, session, api, settings):
             # t = f'{author}:\n{message["text"]}\n{now}\n'
             t = f' - {message} - {author} - ({now})'
             f.write(t + '\n')
+        return 'ok'
     else:
         return 'ok'
