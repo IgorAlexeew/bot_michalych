@@ -265,9 +265,9 @@ def GET_from_vk(data, session, api, settings):
 
     #     return 'ok'
     elif data['type'] == 'message_reply':
-        message = data['object']['message']
-        user_id = data['object']['message']['from_id']
-        peer_id = data['object']['message']['peer_id']
+        message = data['object']
+        user_id = data['object']['from_id']
+        peer_id = data['object']['peer_id']
         isChat = user_id != peer_id
         # message_id = data['object']['message']['conversation_message_id']
         text = message['text']
