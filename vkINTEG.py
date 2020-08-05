@@ -164,12 +164,12 @@ def GET_from_vk(data, session, api, settings):
             f.write(str(message) + '\n')
 
         # chat title
-        if isNew:
-            if isChat:
-                title = conv['items'][0]['chat_settings']['title']
-                title = f'Беседа "{title}" ({peer_id})\n'
-            else:
-                title = f'Личные сообщения ({peer_id})\n'
+        if isChat:
+            title = conv['items'][0]['chat_settings']['title']
+            title = f'Беседа "{title}" ({peer_id})\n'
+        else:
+            title = f'Личные сообщения ({peer_id})\n'
+            
 
         with open(f'{history_path}/text.txt', 'a') as f:
             if isNew:
