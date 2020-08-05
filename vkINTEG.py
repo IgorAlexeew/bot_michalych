@@ -181,7 +181,7 @@ def GET_from_vk(data, session, api, settings):
                 access_token=token,
                 user_id=str(user_id),
                 random_id=random.randint(0, 18446744073709551615),
-                message=msg.format(author=author),
+                message=msg.format(author_name=author.split()[1]),
             )
             return 'ok'
         elif check_exist(text, list(map(lambda x: f'{x},', bot.config_['intents']['appeal']['example']))):
