@@ -37,7 +37,7 @@ class vkAPI(vk.API):
         return ans
 
     def markAsRead(self, peer_id):
-        ans = api.messages.markAsRead(
+        ans = self.messages.markAsRead(
             access_token=self.token,
             peer_id=str(peer_id),
             mark_conversation_as_read=1
@@ -45,14 +45,14 @@ class vkAPI(vk.API):
         return ans
 
     def setActivity(self, peer_id):
-        api.messages.setActivity(
+        self.messages.setActivity(
             access_token=self.token,
             peer_id=str(peer_id),
             type='typing'
         )
 
     def getConversationsById(self, peer_id):
-        api.messages.getConversationsById(
+        self.messages.getConversationsById(
             access_token=self.token,
             peer_ids=peer_id
         )
