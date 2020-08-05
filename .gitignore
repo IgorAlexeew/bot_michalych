@@ -1,0 +1,4 @@
+/.spec/
+/__pycache__/
+/config/__pycache__/
+/old/
