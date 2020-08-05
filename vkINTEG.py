@@ -58,7 +58,10 @@ def GET_from_vk(data, session, api, settings):
         list_dir = os.listdir(f'site/history/{chat_type}/')
 
         if peer_id not in list_dir:
+            isNew = True
             os.mkdir(f'site/history/{chat_type}/{peer_id}')
+        else:
+            isNew = False
 
         with open(f'site/history/{chat_type}/{peer_id}/full.txt', 'a') as f:
             f.write(str(message) + '\n')
