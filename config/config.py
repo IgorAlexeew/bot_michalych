@@ -14,6 +14,7 @@ def get_path():
 
 path = get_path()[0]
 
+print(path)
 
 # print(path)
 
@@ -280,6 +281,7 @@ BOT_CONFIG = obj_read()
 
 
 def obj_write(path=f'{path}bot.config', obj=BOT_CONFIG):
+    print(path)
     with open(path, 'wb') as f:
         pickle.dump(obj, f)
 
@@ -569,19 +571,19 @@ def edit():
         dialogue_save = YesNoDialogue('Сохранить изменения?')
         answer_save = dialogue_save.ask()
         if answer_save:
-            if 'old' not in os.listdir():
-                os.mkdir('old')
+            if 'old' not in os.listdir(path):
+                os.mkdir(f'{path}old')
 
-            dir_old = os.listdir('old/')
+            dir_old = os.listdir(f'{path}old')
             c = 0
             for n in dir_old:
                 if '.config' in n:
                     c += 1
             
             now = datetime.datetime.today().strftime("%d.%m.%Y")
-            if 'bot.config' in os.listdir():
-                os.rename('bot.config', f'old/bot{c:04d}_{now}.config')
-            obj_write(path='bot.config', obj=BOT_CONFIG)
+            if 'bot.config' in os.listdir(path):
+                os.rename(f'{path}bot.config', f'{path}old\\bot{c:04d}_{now}.config')
+            obj_write(path=f'{path}bot.config', obj=BOT_CONFIG)
             print('\nИзменения сохранены.')
         else:
             print('\nИзменения не будут сохранены.')
