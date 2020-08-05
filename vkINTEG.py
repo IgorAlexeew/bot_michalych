@@ -56,12 +56,14 @@ def GET_from_vk(data, session, api, settings):
         # write history
         chat_type = 'conversation' if isChat else 'private'
         list_dir = os.listdir(f'site/history/{chat_type}/')
-        isNew = True if f'{peer_id}_text.txt' not in list_dir else False
 
-        with open(f'site/history/{chat_type}/{peer_id}_full.txt', 'a') as f:
+        if peer_id not in list_dir:
+            os.mkdir(f'site/history/{chat_type}/{peer_id}')
+
+        with open(f'site/history/{chat_type}/{peer_id}/full.txt', 'a') as f:
             f.write(str(message) + '\n')
 
-        with open(f'site/history/{chat_type}/{peer_id}_text.txt', 'a') as f:
+        with open(f'site/history/{chat_type}/{peer_id}/text.txt', 'a') as f:
             author = api.users.get(
                 access_token=token,
                 user_ids=message['from_id']
@@ -79,6 +81,27 @@ def GET_from_vk(data, session, api, settings):
                 f.write(title + '\n')
             now = time.strftime("%H:%M:%S %d.%m.%Y", time.localtime())
             t = f'{author}:\n{message["text"]}\n{now}\n'
+            f.write(t + '\n')
+        
+        with open(f'site/history/{chat_type}/{peer_id}/dialogue.txt', 'a') as f:
+            author = api.users.get(
+                access_token=token,
+                user_ids=message['from_id']
+            )[0]
+            author = author['last_name'] + ' ' + author['first_name']
+            if isNew:
+                if isChat:
+                    title = api.messages.getConversationsById(
+                        access_token=token,
+                        peer_ids=peer_id
+                    )['items'][0]['chat_settings']['title']
+                    title = f'Беседа "{title}"\n'
+                else:
+                    title = f'Личные сообщения\n'
+                f.write(title + '\n')
+            now = time.strftime("%H:%M:%S %d.%m.%Y", time.localtime())
+            # t = f'{author}:\n{message["text"]}\n{now}\n'
+            t = f' - {message} - {author} - ({now})'
             f.write(t + '\n')
 
         if isChat:
@@ -238,5 +261,64 @@ def GET_from_vk(data, session, api, settings):
     #         )
 
     #     return 'ok'
+    elif data['type'] == 'message_reply':
+        message = data['object']['message']
+        user_id = data['object']['message']['from_id']
+        peer_id = data['object']['message']['peer_id']
+        isChat = user_id != peer_id
+        # message_id = data['object']['message']['conversation_message_id']
+        text = message['text']
+        char_time = 0.2
+
+        # write history
+        chat_type = 'conversation' if isChat else 'private'
+        list_dir = os.listdir(f'site/history/{chat_type}/')
+
+        if peer_id not in list_dir:
+            os.mkdir(f'site/history/{chat_type}/{peer_id}')
+
+        with open(f'site/history/{chat_type}/{peer_id}/full.txt', 'a') as f:
+            f.write(str(message) + '\n')
+
+        with open(f'site/history/{chat_type}/{peer_id}/text.txt', 'a') as f:
+            author = api.users.get(
+                access_token=token,
+                user_ids=message['from_id']
+            )[0]
+            author = author['last_name'] + ' ' + author['first_name']
+            if isNew:
+                if isChat:
+                    title = api.messages.getConversationsById(
+                        access_token=token,
+                        peer_ids=peer_id
+                    )['items'][0]['chat_settings']['title']
+                    title = f'Беседа "{title}"\n'
+                else:
+                    title = f'Личные сообщения\n'
+                f.write(title + '\n')
+            now = time.strftime("%H:%M:%S %d.%m.%Y", time.localtime())
+            t = f'{author}:\n{message["text"]}\n{now}\n'
+            f.write(t + '\n')
+
+        with open(f'site/history/{chat_type}/{peer_id}/dialogue.txt', 'a') as f:
+            author = api.users.get(
+                access_token=token,
+                user_ids=message['from_id']
+            )[0]
+            author = author['last_name'] + ' ' + author['first_name']
+            if isNew:
+                if isChat:
+                    title = api.messages.getConversationsById(
+                        access_token=token,
+                        peer_ids=peer_id
+                    )['items'][0]['chat_settings']['title']
+                    title = f'Беседа "{title}"\n'
+                else:
+                    title = f'Личные сообщения\n'
+                f.write(title + '\n')
+            now = time.strftime("%H:%M:%S %d.%m.%Y", time.localtime())
+            # t = f'{author}:\n{message["text"]}\n{now}\n'
+            t = f' - {message} - {author} - ({now})'
+            f.write(t + '\n')
     else:
         return 'ok'
