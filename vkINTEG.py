@@ -326,7 +326,6 @@ def GET_from_vk(data, session, api, settings):
             f.write(str(message) + '\n')
 
         with open(f'site/history/{chat_type}/{peer_id}/text.txt', 'a') as f:
-            author = author['last_name'] + ' ' + author['first_name']
             if isNew:
                 if isChat:
                     title = api.messages.getConversationsById(
@@ -342,11 +341,6 @@ def GET_from_vk(data, session, api, settings):
             f.write(t + '\n')
 
         with open(f'site/history/{chat_type}/{peer_id}/dialogue.txt', 'a') as f:
-            author = api.users.get(
-                access_token=token,
-                user_ids=message['from_id']
-            )[0]
-            author = author['last_name'] + ' ' + author['first_name']
             if isNew:
                 if isChat:
                     title = api.messages.getConversationsById(
