@@ -45,11 +45,12 @@ class vkAPI(vk.API):
         return ans
 
     def setActivity(self, peer_id):
-        self.messages.setActivity(
+        ans = self.messages.setActivity(
             access_token=self.token,
             peer_id=str(peer_id),
             type='typing'
         )
+        return ans
 
     def getConversationsById(self, peer_id):
         conv = self.messages.getConversationsById(
@@ -317,7 +318,7 @@ def GET_from_vk(data, session, api, settings):
         chat_type = 'conversation' if isChat else 'private'
         list_dir = os.listdir(f'site/history/{chat_type}/')
 
-        if peer_id not in list_dir:
+        if str(peer_id) not in list_dir:
             os.mkdir(f'site/history/{chat_type}/{peer_id}')
 
         with open(f'site/history/{chat_type}/{peer_id}/full.txt', 'a') as f:
