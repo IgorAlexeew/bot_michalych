@@ -310,6 +310,7 @@ def GET_from_vk(data, session, api, settings):
         user_id = data['object']['from_id']
         peer_id = data['object']['peer_id']
         isChat = user_id != peer_id
+        author = "Михалыч"
         # message_id = data['object']['message']['conversation_message_id']
         text = message['text']
         char_time = 0.2
