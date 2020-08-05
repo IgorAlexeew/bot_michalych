@@ -52,10 +52,11 @@ class vkAPI(vk.API):
         )
 
     def getConversationsById(self, peer_id):
-        self.messages.getConversationsById(
+        conv = self.messages.getConversationsById(
             access_token=self.token,
             peer_ids=peer_id
         )
+        return conv
 
 
 path = get_path()[0]
