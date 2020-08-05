@@ -14,7 +14,7 @@ def get_path():
 
 path = get_path()[0]
 
-print(path)
+# print(path)
 
 # print(path)
 
