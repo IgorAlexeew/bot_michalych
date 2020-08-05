@@ -198,7 +198,6 @@ def GET_from_vk(data, session, api, settings):
             
             if file[0] != f'{title}':
                 with open(f'{history_path}/dialogue.txt', 'w') as f:
-                    file = title + '\n'.join(file[1:])
                     f.write(file)
 
         # send answer
