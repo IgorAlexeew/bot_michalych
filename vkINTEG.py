@@ -55,9 +55,9 @@ def GET_from_vk(data, session, api, settings):
 
         # write history
         chat_type = 'conversation' if isChat else 'private'
-        list_dir = os.listdir(f'site/history/{chat_type}/')
+        list_dir = os.listdir(f'site/history/{chat_type}')
 
-        if peer_id not in list_dir:
+        if str(peer_id) not in list_dir:
             isNew = True
             os.mkdir(f'site/history/{chat_type}/{peer_id}')
         else:
