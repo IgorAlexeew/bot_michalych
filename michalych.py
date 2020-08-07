@@ -15,16 +15,21 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 import joblib
 # from config.config import BOT_CONFIG
+from extra import get_path
+
+path_set = get_path()
 
 
 class Bot():
     def __init__(self, *args, **kwargs):
+        sep = path_set[2]
+        self.config_path = sep.join(path_set[1] + ['config', ''])
         if 'config' in kwargs:
             self.config_ = kwargs['config']
         elif 'path_config' in kwargs:
             self.config_ = self.open_config(kwargs['path_config'])
         else:
-            self.config_ = self.open_config()
+            self.config_ = self.open_config(f'{self.config_path}bot.config')
 
         self.threshold = 0.44
 
