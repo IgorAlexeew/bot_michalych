@@ -2,6 +2,9 @@ from pprint import pprint
 import os
 import pickle
 import datetime
+import sys
+print(os.getcwd(), __file__, __name__, __doc__, __spec__)
+print(os.getcwd() in __file__)
 
 
 def get_path():
@@ -13,6 +16,7 @@ def get_path():
 
 
 path = get_path()[0]
+
 
 # print(path)
 
@@ -584,6 +588,7 @@ def edit():
             if 'bot.config' in os.listdir(path):
                 os.rename(f'{path}bot.config', f'{path}old\\bot{c:04d}_{now}.config')
             obj_write(path=f'{path}bot.config', obj=BOT_CONFIG)
+            # update_model(BOT_CONFIG)
             print('\nИзменения сохранены.')
         else:
             print('\nИзменения не будут сохранены.')
@@ -592,6 +597,8 @@ def edit():
 
 
 if __name__ == '__main__':
+    print(f'{"now":-^70}')
+    pprint(BOT_CONFIG)
     print(f'{"BOT_CONFIG":-^70}')
     print_config()
     print(f'{"/BOT_CONFIG":-^70}')

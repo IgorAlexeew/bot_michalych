@@ -3,7 +3,7 @@ import random
 import time
 import difflib
 import vk
-from config.config import get_path
+from extra import get_path
 from michalych import Bot
 
 

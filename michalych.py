@@ -13,11 +13,19 @@ import sys
 
 from sklearn.feature_extraction.text import CountVectorizer 
 from sklearn.linear_model import LogisticRegression
-from config.config import BOT_CONFIG
+import joblib
+# from config.config import BOT_CONFIG
+
 
 class Bot():
-    def __init__(self, config=BOT_CONFIG):
-        self.config_ = config
+    def __init__(self, *args, **kwargs):
+        if 'config' in kwargs:
+            self.config_ = kwargs['config']
+        elif 'path_config' in kwargs:
+            self.config_ = self.open_config(kwargs['path_config'])
+        else:
+            self.config_ = self.open_config()
+
         self.threshold = 0.44
 
         X_text = []
@@ -85,9 +93,73 @@ class Bot():
             return res
         else:
             pass
+    
+    def save_model(self):
+        joblib.dump(self.model, 'config/bot.model')
+    
+    def open_model(self):
+        m = joblib.load('config/bot.model')
+        return m
+    
+    def open_config(self, path='config/bot.config'):
+        CONFIG = {}
+
+        with open(f'{path}', 'r', encoding='utf-8') as f:
+            file = f.read()
+            file = re.sub(r'(\t){1}', ' ', file)
+            file = file.split('\n')
+
+        klevel = []
+
+        for line in file:
+            if line.strip() == '' and len(klevel) > 0:
+                klevel.pop(-1)
+
+            if re.match(r'\b[a-z]*:', line):
+                CONFIG[line[:-1]] = {}
+                klevel = []
+                klevel.append(line[:-1])
+                continue
+
+            if re.match(r'\b.*', line) and len(klevel) == 3:
+                CONFIG[klevel[0]][klevel[1]][klevel[2]] += f'\n{line}'
+                continue
+
+            if re.match(r'\s{4}\b[a-z]*:', line):
+                # if 'intents' not in CONFIG:
+                #     CONFIG['intents'] = None
+                if len(klevel) > 1:
+                    klevel.pop(-1)
+
+                CONFIG[klevel[0]][line.strip(' :')] = {}
+                klevel.append(line.strip(' :'))
+                continue
+
+            if re.match(r'\s{8}\b[a-z]*:', line):
+                # if 'intents' not in CONFIG:
+                #     CONFIG['intents'] = None
+                CONFIG[klevel[0]][klevel[1]][line.strip(' :')] = []
+                klevel.append(line.strip(' :'))
+                continue
+
+            if re.match(r'\s{12}\b.*', line) and len(klevel) == 3:
+                CONFIG[klevel[0]][klevel[1]][klevel[2]].append(line.strip())
+                continue
+
+            if re.match(r'\s{12}\b.*', line) and len(klevel) == 1:
+                if CONFIG[klevel[0]] == {}:
+                    CONFIG[klevel[0]] = []
+                CONFIG[klevel[0]].append(line.strip())
+                continue
+        # from pprint import pprint
+        # pprint(CONFIG)
+        return CONFIG
+
+
 
 if __name__ == '__main__':
-    bot = Bot(BOT_CONFIG)
+    bot = Bot()
+    bot.save_model()
     # print(BOT_CONFIG)
     while True:
         text = input('Я:       ')
