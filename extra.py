@@ -3,4 +3,4 @@ def get_path():
     path_arr = __file__.split(sep)
     path_str = sep.join(path_arr[:-1] + [''])
 
-    return path_str, path_arr, sep
+    return path_str, path_arr[:-1], sep
