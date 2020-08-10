@@ -62,6 +62,27 @@ div#main p {
     color: #000;
 }
 
+div#main a {
+    color: #404040;
+    text-decoration: none;
+    --anim_set: color 1s ease-in-out;
+    -moz-transition: var(--anim_set);
+    -webkit-transition: var(--anim_set);
+    -moz-transition: var(--anim_set);
+    -o-transition: var(--anim_set);
+    transition: var(--anim_set);
+}
+
+div#main a:hover {
+    color: #2a2a2a;
+    --anim_set: color .2s ease-in-out;
+    -moz-transition: var(--anim_set);
+    -webkit-transition: var(--anim_set);
+    -moz-transition: var(--anim_set);
+    -o-transition: var(--anim_set);
+    transition: var(--anim_set);
+}
+
 @media only screen and (min-width: 960px) {
     div#main {
 /*
@@ -93,5 +114,13 @@ div#main p {
         margin: 6px 20px;
         font-size: 13pt;
         color: #fff;
+    }
+
+    div#main a {
+        color: #afafaf;
+    }
+
+    div#main a:hover {
+        color: #e8e8e8;
     }
 }
