@@ -117,6 +117,7 @@ class Bot():
         klevel = []
 
         for line in file:
+            print(line)
             if line.strip() == '' and len(klevel) > 0:
                 klevel.pop(-1)
 
