@@ -1,0 +1,14 @@
+The key fingerprint is:
+SHA256:1m48TNplQaaOYF+i/EJteM+EnuM/TVhvmk24SAvnkUM goscha.alekseew2015@yandex.ru
+The key's randomart image is:
++---[RSA 4096]----+
+|            o    |
+|           +     |
+|      o . o .    |
+|     o * BE ..   |
+|      = S.=+oo   |
+|     . *.%Boo +  |
+|      . *=XB B   |
+|       o o=.= .  |
+|        ....     |
++----[SHA256]-----+

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,500;1,600&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&family=Pacifico&family=Ubuntu+Condensed&display=swap');
+
+/* font-family: 'Exo 2', sans-serif;
+font-family: 'IBM Plex Sans', sans-serif;
+font-family: 'Noto Serif JP', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Ubuntu Condensed', sans-serif; */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background: #c4d2db;
+}
+
+div#main {
+    background: #fdfdfd;
+    width:240px; /*Ширина блока*/
+    height:335px; /*Высота блока*/
+    margin:0 auto;
+    overflow:visible;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-120px; /*Смещаем блок на половину всей ширины влево*/
+    margin-top:-200px; /*Смещаем блок на половину высоты вверх*/
+    border-radius: 25px;
+    box-shadow: 0 0 25px #798294;
+    z-index: 100;
+}
+
+div#main img {
+    width: 100%;
+    border-radius: 25px 25px 0 0;
+    height: 159px;
+    object-fit: cover;
+}
+
+div#main h1 {
+    margin: 185px 10px 0 10px;
+    font-size: 19pt;
+}
+
+div#main p {
+    margin: 2px 10px;
+}
+/* 
+div#join {
+    background: #1567ff;
+    width:240px;
+    height:50px;
+    margin:0 auto;
+    overflow:visible;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-120px;
+    margin-top:150px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #798294, inset 0 0 0 0px #357bff, inset 0 0 0 0px #518eff;
+    -moz-transition: box-shadow 1s ease-in-out;
+    -webkit-transition: box-shadow 1s ease-in-out;
+    -moz-transition: box-shadow 1s ease-in-out;
+    -o-transition: box-shadow 1s ease-in-out;
+    transition: box-shadow 1s ease-in-out;
+}
+
+div#join:hover {
+    box-shadow: 0 0 25px #798294, inset 0 0 0 5px #357bff, inset 0 0 0 0 #518eff;
+}
+
+div#join:active {
+    -moz-transition: box-shadow .2s ease-in-out;
+    -webkit-transition: box-shadow .2s ease-in-out;
+    -moz-transition: box-shadow .2s ease-in-out;
+    -o-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+    box-shadow: 0 0 25px #798294, inset 0 0 0 5px #357bff, inset 0 0 0 10px #518eff;
+}
+
+div#join p {
+    text-align: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12pt;
+    color: rgb(255, 255, 255);
+    margin: 6%;
+} */
+
+div#join a{
+    text-align: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12pt;
+    color: rgb(255, 255, 255);
+    margin: 6%;
+    background: #1567ff;
+    width: 240px;
+    height: 35px;
+    margin: 0 auto;
+    overflow: visible;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -120px;
+    margin-top: 150px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #798294, inset 0 0 0 0px #357bff, inset 0 0 0 0px #518eff;
+    -moz-transition: box-shadow .2s ease-in-out;
+    -webkit-transition: box-shadow .2s ease-in-out;
+    -moz-transition: box-shadow .2s ease-in-out;
+    -o-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+    padding: 10px 0 0 0;
+    text-decoration: none;
+}
+
+div#join a:hover {
+    box-shadow: 0 0 25px #798294, inset 0 0 0 5px #357bff, inset 0 0 0 0 #518eff;
+}
+
+div#join a:active {
+    -moz-transition: box-shadow .2s ease-in-out;
+    -webkit-transition: box-shadow .2s ease-in-out;
+    -moz-transition: box-shadow .2s ease-in-out;
+    -o-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+    box-shadow: 0 0 25px #798294, inset 0 0 0 5px #357bff, inset 0 0 0 10px #518eff;
+}
+
+@media only screen and (min-width: 960px) {
+    div#main {
+        width:340px; /*Ширина блока*/
+        height:440px; /*Высота блока*/
+        margin-left:-170px; /*Смещаем блок на половину всей ширины влево*/
+        margin-top:-250px; /*Смещаем блок на половину высоты вверх*/
+        border-radius: 25px;
+    }
+
+    /* div#main img {
+        width: 100%;
+        border-radius: 25px 25px 0 0;
+        height: 159px;
+        object-fit: cover;
+    } */
+
+    div#main h1 {
+        margin: 255px 20px 0 20px;
+        font-size: 26pt;
+    }
+
+    div#main p {
+        margin: 6px 20px;
+        font-size: 13pt;
+    }
+ 
+    div#join a{
+        font-weight: 700;
+        font-size: 15pt;
+        margin: 0%;
+        width: 340px;
+        height: 40px;
+        margin-left: -170px;
+        margin-top: 200px;
+        border-radius: 25px;
+        padding: 10px 0 0 0;
+    }
+}
