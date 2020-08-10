@@ -64,6 +64,7 @@ div#main p {
 
 @media only screen and (min-width: 960px) {
     div#main {
+/*
         width: 80%;
         height: 100%;
         border-radius: 25px;
@@ -71,6 +72,15 @@ div#main p {
         background-size: cover;
         position: static;
         margin: 10% 10%;
+*/
+        width: 800px;
+        height: 570px;
+        left: 50%;
+        top: 50%;
+        margin-left: -400px;
+        margin-top: -285px;
+        border-radius: 25px;
+        background-size: cover;
     }
 
     div#main h1 {
