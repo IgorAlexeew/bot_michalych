@@ -1,4 +1,4 @@
 # **bot_michalych**
-Michalych bor repository.
+Michalych bot repository.
 
 [Michalych](https://michalych.pythonanywhere.com) - offical site.
